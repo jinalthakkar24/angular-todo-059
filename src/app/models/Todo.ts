@@ -3,3 +3,7 @@ export class Todo{
     title:String;
     completed:boolean;
 }
+
+export class TodoTask {
+    description: String;
+}

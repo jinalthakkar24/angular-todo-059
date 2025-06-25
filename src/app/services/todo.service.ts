@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Todo} from '../models/Todo';
+import {Todo, TodoTask} from '../models/Todo';
 import { Observable } from 'rxjs';
 
 
@@ -25,6 +25,10 @@ export class TodoService {
   return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
   }
 
+  //get Todos task
+  getTodosTask(): Observable<TodoTask[]>{
+    console.log("Task here...")
+  }
 
   //delete todo
   deleteTodo(todo:Todo):Observable<Todo>{
