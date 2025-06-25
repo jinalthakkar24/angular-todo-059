@@ -1,0 +1,11 @@
+ignore_paths:
+  - "tests/"
+  - "*.md"
+
+review_rules:
+  max_comments: 10
+  language: "en"
+
+ai:
+  model: "gpt-4"
+  enable_inline_comments: true
