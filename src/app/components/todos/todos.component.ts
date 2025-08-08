@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {Todo} from '../../models/Todo';
 import {TodoService} from '../../services/todo.service'
-import { from } from 'rxjs';
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css']
+  styleUrls: ['./todos.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodosComponent implements OnInit {
   todos:Todo[];
@@ -26,8 +26,12 @@ export class TodosComponent implements OnInit {
     }
 
     addTodo(todo:Todo) {
-      this.todoService.addTodo(todo).subscribe(tudo => {
-      this.todos.push(todo);
+      this.todoService.addTodo(todo).subscribe(newTodo => {
+        this.todos = [...this.todos, newTodo];
       });
+    }
+
+    trackByTodoId(index: number, todo: Todo): number {
+      return todo.id;
     }
 }

@@ -1,25 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 //it is called decorator
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  name:String = 'brand';
-
-
-  constructor(){
-  //  console.log(123);
-     this.changeName('jinal');
-  }
-
-
-  //custome method
-  changeName(name:String):void{
-    this.name = name;
-  }
-
-
+  title = 'angular-crash-todolist';
 }

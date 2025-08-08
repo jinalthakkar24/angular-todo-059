@@ -1,11 +1,11 @@
-import { Component, OnInit, Input,EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input,EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Todo } from 'src/app/models/Todo';
 import { TodoService } from '../../services/todo.service';
-import { from } from 'rxjs';
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.css']
+  styleUrls: ['./todo-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoItemComponent implements OnInit {
 
@@ -32,7 +32,7 @@ export class TodoItemComponent implements OnInit {
     //Toggle in UI 
     todo.completed = !todo.completed;
     //TOggle on Server
-    this.todoServie.toggleCompleted(todo).subscribe(todo => console.log(todo));
+    this.todoServie.toggleCompleted(todo).subscribe();
   }
 
    //onDeelte
